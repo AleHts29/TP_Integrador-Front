@@ -1,11 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&family=Roboto+Mono:wght@200;300;400;500;600&display=swap');
+
+/* Colores */
+:root {
+    --main-background-color: #0d1b2a;
+    --primary-color: #38bcfe;
+    --secondary-color: #ffffff;
+    --text-color: #cdcdcd;
+    --navbar-bg-color: #ecf0f3;
+    --navbar-text-color: #8d99ae;
+    --navbar-text-hover-color: #ffffff;
+    --link-color: #5abc41;
+    --heading-color: #219dbc74;
+    --card-bg-color: rgb(110, 140, 153);
+    --badge-bg-color: #219dbc67;
+    --button-bg-color: #8dd12f;
+    --button-hover-bg-color: #66a549;
+    --footer-bg-color: #227093;
+    --article-bg-color: #2f3542;
+}
+
 /* Reset de márgenes para todos los elementos */
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body.intro {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background: var(--main-background-color);
+    overflow: hidden;
+}
+
+.Container span.text {
+    position: relative;
+    font-size: 30px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.Container span.text.first-text {
+    color: var(--secondary-color);
+}
+
+.boxMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+span.text.sec-text::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--main-background-color);
+    border-left: 2px solid aqua;
+    animation: animate 4s steps(12) infinite;
+}
+
+@keyframes animate {
+
+    40%,
+    60% {
+        left: 100%;
+    }
+
+    100% {
+        left: 0%;
+    }
 }
 
 nav {
-    background-color: #6c6c6c;
+    background-color: var(--navbar-bg-color);
 }
 
 nav div.container-fluid {
@@ -13,8 +89,12 @@ nav div.container-fluid {
     margin-right: 4%;
 }
 
+h3 {
+    color: var(--heading-color);
+}
+
 h4 {
-    color: white;
+    color: var(--secondary-color);
 }
 
 .navContainer {
@@ -23,16 +103,16 @@ h4 {
 
 /* Cambia el color de los elementos de la lista en la barra de navegación */
 .navbar-nav li.nav-item a.nav-link {
-    color: #bbbaba;
+    color: var(--navbar-text-color);
 }
 
 .navbar-nav li.nav-item a.tickets {
-    color: #5abc41;
+    color: var(--link-color);
 }
 
 /* Cambia el color de los elementos de la lista cuando se les hace hover (puntero encima) */
 .navbar-nav li.nav-item a.nav-link:hover {
-    color: white;
+    color: var(--navbar-text-hover-color);
 }
 
 /* Banner */
@@ -65,51 +145,110 @@ div.textBanner {
     margin-right: 4%;
     width: 50em;
     height: 50%;
-
-}
-
-div.textBanner {
     position: relative;
     z-index: 2;
-    color: #cdcdcd;
+    color: var(--text-color);
     text-align: right;
     padding: 20px;
     background-color: transparent;
 }
 
 /* Cards */
-div.card {
-    border: none;
-    background-color: transparent;
-    transition: transform 0.3s;
+div.bgCard {
+    background-color: var(--card-bg-color);
 }
 
-div.card:hover {
-    transform: scale(1.02);
+/* Neumorphism styles */
+div.card,
+div.card img,
+.social-icons a,
+.badge {
+    border: none;
+    background: var(--navbar-bg-color);
+    border-radius: 30px;
+    box-shadow: -3px -3px 7px #ffffff, 3px 3px 5px #ceced1;
+}
+
+.badge {
+    margin: 5px;
+    color: var(--navbar-bg-color);
+    background: var(--badge-bg-color);
+}
+
+div.card {
+    padding: 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    margin: 15px 0 25px 0;
+}
+
+.social-icons a {
+    height: 40px;
+    width: 40px;
+    display: inline-flex;
+    text-decoration: none;
+    margin: 0 5px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.social-icons a:hover::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: var(--navbar-bg-color);
+    border-radius: 50%;
+    box-shadow: inset -3px -3px 7px #ffffff, inset 3px 3px 5px #ceced1;
+}
+
+.social-icons a i {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    position: relative;
+    z-index: 5;
+}
+
+.social-icons a.lk i {
+    color: #4267B2;
+}
+
+.social-icons a.x i {
+    color: #212529;
+}
+
+.social-icons a.insta i {
+    color: #E1306C;
+}
+
+.social-icons a.yt i {
+    color: #c1121f;
 }
 
 div.card img {
-    border-radius: 40px;
-    border: none;
+    border-radius: 50%;
 }
 
 div.speakersSetion {
     display: flex;
     flex-direction: column;
-    padding: 1rem;
-    /* justify-content: center; */
-    /* align-content: center; */
-
+    padding: 5rem 0 15rem 0;
+    background: var(--navbar-bg-color);
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    /* justify-content: space-around;
-    align-content: space-around; */
 }
 
 div.speakersCards {
-    /* background-color: #5abc41; */
     padding: 0.5rem;
     display: flex;
     flex-wrap: wrap;
@@ -118,14 +257,10 @@ div.speakersCards {
     align-content: space-around;
 }
 
-
 /* 2do Banner */
 div.articleSection {
     display: flex;
-
-
 }
-
 
 div.article_setion_01 {
     background-image: url('../img/honolulu.jpg');
@@ -138,10 +273,9 @@ div.article_setion_01 {
 
 div.article_setion_02 {
     width: 50%;
-    color: #8395a7;
-    background-color: #2f3542;
+    color: var(--text-color);
+    background-color: var(--article-bg-color);
 }
-
 
 /* Form */
 div.boxText {
@@ -153,28 +287,33 @@ div.boxText {
 div button.btnSend {
     border: none;
     padding: 1rem;
-    color: white;
-    background-color: #8dd12f;
+    color: var(--secondary-color);
+    background-color: var(--button-bg-color);
 }
 
 div button.btnSend:hover {
     border: none;
     padding: 1rem;
-    background-color: #66a549;
+    background-color: var(--button-hover-bg-color);
 }
-
 
 /* Footer */
 footer {
     display: flex;
     justify-content: center;
-    background-color: #2f3640;
+    background-color: var(--footer-bg-color);
 }
 
 footer div.containerFooter {
     width: 80%;
 }
 
+footer ul.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
 
 /* Estilos para pantallas más pequeñas */
 @media (max-width: 767px) {
@@ -192,8 +331,12 @@ footer div.containerFooter {
     }
 
     div.textBanner {
-        color: #cdcdcd;
+        color: var(--text-color);
         text-align: center;
         background-color: transparent;
+    }
+
+    footer ul.navbar-nav {
+        display: block;
     }
 }
