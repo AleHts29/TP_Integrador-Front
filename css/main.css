@@ -336,6 +336,21 @@ footer ul.navbar-nav {
         background-color: transparent;
     }
 
+    div.articleSection {
+        display: block;
+    }
+
+    div.article_setion_01 {
+        width: 100%;
+    }
+
+    div.article_setion_02 {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
     footer ul.navbar-nav {
         display: block;
     }
