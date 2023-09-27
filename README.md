@@ -7,7 +7,7 @@ Bootstrap para garantizar un diseño moderno y responsivo.
 ## Vista previa
 
 Puedes ver una vista previa de la página web de la conferencia
-[aquí](#insertar-enlace-de-vista-previa).
+[aquí](https://alehts29.github.io/TP_Integrador-Front/).
 
 ## Características
 
