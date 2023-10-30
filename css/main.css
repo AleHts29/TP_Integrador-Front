@@ -13,6 +13,9 @@
     --heading-color: #219dbc74;
     --card-bg-color: rgb(110, 140, 153);
     --badge-bg-color: #219dbc67;
+    --badge_01-bg-color: #e55b6667;
+    --badge_02-bg-color: #219dbc67;
+    --badge_03-bg-color: #7aa09567;
     --button-bg-color: #8dd12f;
     --button-hover-bg-color: #66a549;
     --footer-bg-color: #227093;
@@ -175,6 +178,27 @@ div.card img,
     background: var(--badge-bg-color);
 }
 
+.badge_01 {
+    margin: 5px;
+    border-radius: 20px;
+    color: var(--navbar-bg-color);
+    background: var(--badge_01-bg-color);
+}
+
+.badge_02 {
+    margin: 5px;
+    border-radius: 20px;
+    color: var(--navbar-bg-color);
+    background: var(--badge_02-bg-color);
+}
+
+.badge_03 {
+    margin: 5px;
+    border-radius: 20px;
+    color: var(--navbar-bg-color);
+    background: var(--badge_03-bg-color);
+}
+
 div.card {
     padding: 20px;
 }
@@ -241,7 +265,7 @@ div.card img {
 div.speakersSetion {
     display: flex;
     flex-direction: column;
-    padding: 5rem 0 15rem 0;
+    padding: 5rem 0 5rem 0;
     background: var(--navbar-bg-color);
     display: flex;
     flex-direction: column;
