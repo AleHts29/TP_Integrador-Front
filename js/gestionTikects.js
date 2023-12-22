@@ -15,15 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
     /*=============================================
     =                   Form                  =
     =============================================*/
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        // const nombre = document.getElementById("nombre").value;
-        // const email = document.getElementById("email").value;
-        // let cant = (document.querySelector(".form-control"));
-        let cant = parseInt(document.getElementById("cantidadTickets").value);
+        const firstName = document.getElementById("nombre").value;
+        const lastName = document.getElementById("apellido").value;
+        const email = document.getElementById("email").value;
+        const cant = parseInt(document.getElementById("cantidadTickets").value);
+        const category = selectElement.value;
 
-        console.log(cant);
 
         // Obtén el valor seleccionado del <select>
         var valorSeleccionado = selectElement.value;
@@ -36,13 +36,42 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             `
         } else {
-            let totalToPay = calculatePrice(price, cant, valorSeleccionado);
+            let totalToPay = calculatePrice(price, cant, category);
             console.log("Calculo total: " + totalToPay);
             alertTotalPay.innerHTML = `
                 <div class="alert alert-info" role="alert">
                     Total a pagar: $ <strong>${totalToPay}</strong>
                 </div>
-            `
+            `;
+
+            // Realizar la solicitud a la API
+            const apiUrl = "http://localhost:8080/tickets/save";
+            const data = {
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                cant: cant,
+                category: category,
+                totalToPay: totalToPay
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    console.log("Datos enviados correctamente");
+                } else {
+                    console.error("Error al enviar los datos a la API");
+                }
+            } catch (error) {
+                console.error("Error en la solicitud fetch:", error);
+            }
         }
     })
 
@@ -98,6 +127,4 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         return totalToPay;
     }
-
-
 })
